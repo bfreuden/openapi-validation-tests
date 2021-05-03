@@ -1,0 +1,12 @@
+{
+  "name": "validate-all-with-chai-openapi-response-validator",
+  "version": "1.0.0",
+  "description": "validate-all-with-chai-openapi-response-validator",
+  "author": "bfreuden",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "chai-openapi-response-validator": "^0.13.0",
+    "mocha": "^8.3.2"
+  }
+}

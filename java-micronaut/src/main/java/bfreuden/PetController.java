@@ -7,7 +7,7 @@ public class PetController {
 
     @Get(uri="/pets/{pet}", produces="application/json")
     public String getPet(String pet) {
-        return "{ \"name\":" + pet + ", \"age\": 5 }";
+        return "{ \"name\":\"" + pet + "\", \"age\": 5 }";
     }
 
     @Post(uri="/pets/_search", produces="application/json")

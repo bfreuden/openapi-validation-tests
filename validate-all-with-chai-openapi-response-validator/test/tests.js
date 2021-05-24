@@ -42,7 +42,7 @@ describe('Test all servers', function () {
   it('Python fastapi server must satisfy API spec', async function () {
     const spec = await pythonApi.get("/openapi.json");
     const specFile = `${__dirname}/python-openapi.json`;
-    fs.writeFileSync(specFile, spec.data)
+    fs.writeFileSync(specFile, JSON.stringify(spec.data))
     chai.use(chaiResponseValidator(specFile));
     // get pet data has a 'name' field
     const response = await pythonApi.get("/shops/mine/pets/Wolfie")

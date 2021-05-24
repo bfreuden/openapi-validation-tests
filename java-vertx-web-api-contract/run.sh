@@ -1,3 +1,3 @@
 #!/bin/bash
-mvn exec:java
+mvn compile exec:java
 

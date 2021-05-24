@@ -1,18 +1,9 @@
-## Micronaut 2.5.1 Documentation
+**Requirements**
 
-- [User Guide](https://docs.micronaut.io/2.5.1/guide/index.html)
-- [API Reference](https://docs.micronaut.io/2.5.1/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/2.5.1/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+JDK >= 1.8
+Maven >= 3
 
-## Feature openapi documentation
+**Run the server**
 
-- [Micronaut OpenAPI Support documentation](https://micronaut-projects.github.io/micronaut-openapi/latest/guide/index.html)
-
-- [https://www.openapis.org](https://www.openapis.org)
-
-## Feature http-client documentation
-
-- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+mvn compile mn:run
 

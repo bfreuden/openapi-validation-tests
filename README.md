@@ -2,6 +2,8 @@ Demo of chai-openapi-response-validator with Java, NodeJS and Python OpenAPI-bas
 
 ``java-vertx-web-api-contract`` is java web service implemented with Vert.x Web API Contract.
 
+``java-micronaut`` is java web service implemented with Micronaut.
+
 ``nodejs-express-openapi`` is a NodeJS web service implemented with express-openapi.
 
 ``python-fastapi`` is a Python web service implemented with fastapi.
@@ -11,6 +13,8 @@ Demo of chai-openapi-response-validator with Java, NodeJS and Python OpenAPI-bas
 Usage:
 ```
 cd java-vertx-web-api-contract
+./run.sh
+cd java-micronaut
 ./run.sh
 cd nodejs-express-openapi
 ./run.sh

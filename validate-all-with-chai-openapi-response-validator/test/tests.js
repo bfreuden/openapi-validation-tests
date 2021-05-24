@@ -9,11 +9,14 @@ describe('Test all servers', function () {
   const pythonPort = 8081;
   const pythonApi = axios.create({baseURL: `http://localhost:${pythonPort}`});
 
-  const javaPort = 8082;
-  const javaApi = axios.create({baseURL: `http://localhost:${javaPort}`});
+  const javaVertxPort = 8082;
+  const javaVertxApi = axios.create({baseURL: `http://localhost:${javaVertxPort}`});
 
   const nodejsPort = 8083;
   const nodejsApi = axios.create({baseURL: `http://localhost:${nodejsPort}`});
+
+  const javaMicronautPort = 8084;
+  const javaMicronautApi = axios.create({baseURL: `http://localhost:${javaMicronautPort}`});
 
   const debug = false;
 
@@ -51,15 +54,15 @@ describe('Test all servers', function () {
 
 
   it('Java Vertx Web API Contract server must satisfy basic manual API spec tests', async function () {
-    const response = await javaApi.get("/shops/mine/pets/Wolfie");
+    const response = await javaVertxApi.get("/shops/mine/pets/Wolfie");
     if (debug) {
-      console.log("Java server test");
+      console.log("Java Vert.x server test");
       console.log("GET /shops/mine/pets/Wolfie");
       console.log(response.data);  
     }
     // get pet data has a 'name' field
     expect(response.data.name).to.be.not.null;
-    const response2 = await javaApi.post("/shops/mine/pets/_search");
+    const response2 = await javaVertxApi.post("/shops/mine/pets/_search");
     if (debug) {
       console.log("POST /shops/mine/pets/_search");
       console.log(response2.data);
@@ -71,10 +74,39 @@ describe('Test all servers', function () {
   it('Java Vertx Web API Contract server must satisfy API spec', async function () {
     chai.use(chaiResponseValidator(`${__dirname}/../../java-vertx-web-api-contract/src/main/openapi/openapi.json`));
 
-    const response = await javaApi.get("/shops/mine/pets/Wolfie");
+    const response = await javaVertxApi.get("/shops/mine/pets/Wolfie");
     expect(response).to.satisfyApiSpec;
 
-    const response2 = await javaApi.post("/shops/mine/pets/_search");
+    const response2 = await javaVertxApi.post("/shops/mine/pets/_search");
+    expect(response2).to.satisfyApiSpec;
+  });
+
+
+  it('Java Micronaut server must satisfy basic manual API spec tests', async function () {
+    const response = await javaMicronautApi.get("/shops/mine/pets/Wolfie");
+    if (debug) {
+      console.log("Java Micronaut test");
+      console.log("GET /shops/mine/pets/Wolfie");
+      console.log(response.data);  
+    }
+    // get pet data has a 'name' field
+    expect(response.data.name).to.be.not.null;
+    const response2 = await javaMicronautApi.post("/shops/mine/pets/_search", {});
+    if (debug) {
+      console.log("POST /shops/mine/pets/_search");
+      console.log(response2.data);
+    }
+    // search pets response has a 'hits' field
+    expect(response.data.hits).to.be.not.null;
+  });
+
+  it('Java Micronaut server must satisfy API spec', async function () {
+    chai.use(chaiResponseValidator(`${__dirname}/../../java-vertx-web-api-contract/src/main/openapi/openapi.json`));
+
+    const response = await javaMicronautApi.get("/shops/mine/pets/Wolfie");
+    expect(response).to.satisfyApiSpec;
+
+    const response2 = await javaMicronautApi.post("/shops/mine/pets/_search");
     expect(response2).to.satisfyApiSpec;
   });
 

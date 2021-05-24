@@ -29,14 +29,14 @@ describe('Test all servers', function () {
       console.log(response.data);  
     }
     // get pet data has a 'name' field
-    expect(response.data.name).to.be.not.null;
+    expect(response.data.name).to.exist;
     const response2 = await pythonApi.post("/shops/mine/pets/_search");
     if (debug) {
       console.log("POST /shops/mine/pets/_search");
       console.log(response2.data);
     }
     // search pets response has a 'hits' field
-    expect(response.data.hits).to.be.not.null;
+    expect(response2.data.hits).to.exist;
   });
 
   it('Python fastapi server must satisfy API spec', async function () {
@@ -61,14 +61,14 @@ describe('Test all servers', function () {
       console.log(response.data);  
     }
     // get pet data has a 'name' field
-    expect(response.data.name).to.be.not.null;
+    expect(response.data.name).to.exist;
     const response2 = await javaVertxApi.post("/shops/mine/pets/_search");
     if (debug) {
       console.log("POST /shops/mine/pets/_search");
       console.log(response2.data);
     }
     // search pets response has a 'hits' field
-    expect(response.data.hits).to.be.not.null;
+    expect(response2.data.hits).to.exist;
   });
 
   it('Java Vertx Web API Contract server must satisfy API spec', async function () {
@@ -90,14 +90,14 @@ describe('Test all servers', function () {
       console.log(response.data);  
     }
     // get pet data has a 'name' field
-    expect(response.data.name).to.be.not.null;
+    expect(response.data.name).to.exist;
     const response2 = await javaMicronautApi.post("/shops/mine/pets/_search", {});
     if (debug) {
       console.log("POST /shops/mine/pets/_search");
       console.log(response2.data);
     }
     // search pets response has a 'hits' field
-    expect(response.data.hits).to.be.not.null;
+    expect(response2.data.hits).to.exist;
   });
 
   it('Java Micronaut server must satisfy API spec', async function () {
@@ -106,7 +106,7 @@ describe('Test all servers', function () {
     const response = await javaMicronautApi.get("/shops/mine/pets/Wolfie");
     expect(response).to.satisfyApiSpec;
 
-    const response2 = await javaMicronautApi.post("/shops/mine/pets/_search");
+    const response2 = await javaMicronautApi.post("/shops/mine/pets/_search", {});
     expect(response2).to.satisfyApiSpec;
   });
 
@@ -119,14 +119,14 @@ describe('Test all servers', function () {
       console.log(response.data);  
     }
     // get pet data has a 'name' field
-    expect(response.data.name).to.be.not.null;
+    expect(response.data.name).to.exist;
     const response2 = await nodejsApi.post("/shops/mine/pets/_search");
     if (debug) {
       console.log("POST /shops/mine/pets/_search");
       console.log(response2.data);
     }
     // search pets response has a 'hits' field
-    expect(response.data.hits).to.be.not.null;
+    expect(response2.data.hits).to.exist;
   });
 
   it('NodeJS express-openapi server must satisfy API spec', async function () {
